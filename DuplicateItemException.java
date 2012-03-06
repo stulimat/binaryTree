@@ -3,7 +3,8 @@ package binarytree;
  * Exception class for duplicate item errors
  * in search tree insertions.
  */
-public class DuplicateItemException extends RuntimeException {
+public class DuplicateItemException extends RuntimeException 
+{
     /**
      * Construct this exception object.
      */

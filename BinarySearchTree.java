@@ -35,7 +35,7 @@ public class BinarySearchTree<E extends Comparable<E>> implements BinaryTree<E>
     }
     
     /**
-     * Remove minimum element from the tree.
+     * Remove minimum value from the tree.
      * @throws ItemNotFoundException if tree is empty.
      */
     public void removeMin() 
@@ -44,7 +44,7 @@ public class BinarySearchTree<E extends Comparable<E>> implements BinaryTree<E>
     }
     
     /**
-     * Find the smallest element in the tree.
+     * Find the smallest value in the tree.
      * @return smallest element or null if empty.
      */
     public E findMin() 
@@ -53,7 +53,7 @@ public class BinarySearchTree<E extends Comparable<E>> implements BinaryTree<E>
     }
     
     /**
-     * Find the largest item in the tree.
+     * Find the largest value in the tree.
      * @return the largest item or null if empty.
      */
     public E findMax() {
@@ -61,7 +61,7 @@ public class BinarySearchTree<E extends Comparable<E>> implements BinaryTree<E>
     }
     
     /**
-     * Find an item in the tree.
+     * Find a specific value in the tree.
      */
     public E find(E value) 
     {
@@ -77,18 +77,18 @@ public class BinarySearchTree<E extends Comparable<E>> implements BinaryTree<E>
     }
     
     /**
-     * Test if the tree is logically empty.
+     * Test if the tree is empty.
      * @return true if empty, false otherwise.
      */
     public boolean isEmpty() 
     {
-        return root == null;
+        return this.root == null;
     }
     
     /**
      * Internal method to get element field.
      * @param node the node.
-     * @return the element field or null if t is null.
+     * @return the value or null if node is null.
      */
     private E valueAt( BinaryTreeNode<E> node ) 
     {
@@ -100,7 +100,7 @@ public class BinarySearchTree<E extends Comparable<E>> implements BinaryTree<E>
      * @param value the item to insert.
      * @param node the node that roots the tree.
      * @return the new root.
-     * @throws DuplicateItemException if x is already present.
+     * @throws DuplicateItemException if value is already present.
      */
     protected BinaryTreeNode<E> insert(E value, BinaryTreeNode<E> node) 
     {
@@ -125,10 +125,10 @@ public class BinarySearchTree<E extends Comparable<E>> implements BinaryTree<E>
     
     /**
      * Internal method to remove from a subtree.
-     * @param x the item to remove.
-     * @param t the node that roots the tree.
+     * @param value the item to remove.
+     * @param node the node that roots the tree.
      * @return the new root.
-     * @throws ItemNotFoundException if x is not found.
+     * @throws ItemNotFoundException if value is not found.
      */
     protected BinaryTreeNode<E> remove( E value, BinaryTreeNode<E> node ) {
         if( node == null )
@@ -157,9 +157,9 @@ public class BinarySearchTree<E extends Comparable<E>> implements BinaryTree<E>
     
     /**
      * Internal method to remove minimum item from a subtree.
-     * @param t the node that roots the tree.
+     * @param node  the node that roots the tree.
      * @return the new root.
-     * @throws ItemNotFoundException if x is not found.
+     * @throws ItemNotFoundException if value is not found.
      */
     protected BinaryTreeNode<E> removeMin( BinaryTreeNode<E> node ) 
     {
@@ -180,8 +180,8 @@ public class BinarySearchTree<E extends Comparable<E>> implements BinaryTree<E>
     
     /**
      * Internal method to find the smallest item in a subtree.
-     * @param t the node that roots the tree.
-     * @return node containing the smallest item.
+     * @param node  the node that roots the tree.
+     * @return node containing the smallest value.
      */
     protected BinaryTreeNode<E> findMin(BinaryTreeNode<E> node ) 
     {
@@ -194,8 +194,8 @@ public class BinarySearchTree<E extends Comparable<E>> implements BinaryTree<E>
     
     /**
      * Internal method to find the largest item in a subtree.
-     * @param t the node that roots the tree.
-     * @return node containing the largest item.
+     * @param node the node that roots the tree.
+     * @return node containing the largest value.
      */
     private BinaryTreeNode<E> findMax(BinaryTreeNode<E> node) 
     {
@@ -211,8 +211,8 @@ public class BinarySearchTree<E extends Comparable<E>> implements BinaryTree<E>
     
     /**
      * Internal method to find an item in a subtree.
-     * @param x is item to search for.
-     * @param t the node that roots the tree.
+     * @param value is value to search for.
+     * @param node  the node that roots the tree.
      * @return node containing the matched item.
      */
     private BinaryTreeNode<E> find( E value, BinaryTreeNode<E> node ) 
@@ -229,6 +229,10 @@ public class BinarySearchTree<E extends Comparable<E>> implements BinaryTree<E>
         return null;         // Not found
     }
     
+    /**
+    * Returns a string recusively of inorder traversal. 
+    *
+    */
     private String inOrderTreeWalk(BinaryTreeNode<E> node)
     {
     	String output = "";
@@ -240,7 +244,11 @@ public class BinarySearchTree<E extends Comparable<E>> implements BinaryTree<E>
     	}
     	return output;
     }
-    
+    /**
+    * Returns a string recusively of preorder traversal. 
+    *
+    */
+
     private String preOrderTreeWalk(BinaryTreeNode<E> node)
     {
     	String output = "";
@@ -252,7 +260,11 @@ public class BinarySearchTree<E extends Comparable<E>> implements BinaryTree<E>
     	}
     	return output;
     }
-    
+    /**
+    * Returns a string recusively of postorder traversal. 
+    *
+    */
+
     private String postOrderTreeWalk(BinaryTreeNode<E> node)
     { 
     	String output = "";
@@ -264,7 +276,9 @@ public class BinarySearchTree<E extends Comparable<E>> implements BinaryTree<E>
     	}
     	return output;
     }
-    
+    /*
+    * Public methods for calling the traversals.
+    */
     public void inOrderTraversal()
     {
     	System.out.println(inOrderTreeWalk(this.root));
